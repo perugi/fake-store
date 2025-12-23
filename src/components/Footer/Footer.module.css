@@ -1,0 +1,41 @@
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .ghLink {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    letter-spacing: 0;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    height: 38px;
+
+    div:first-child,
+    div:last-child {
+      width: 200px;
+    }
+
+    div:first-child {
+      text-align: end;
+    }
+
+    div:last-child {
+      text-align: start;
+    }
+
+    .ghLogo {
+      width: 35px;
+      height: 35px;
+      margin: 0 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover .ghLogo {
+      transform: rotate(360deg) scale(1.2);
+    }
+  }
+}

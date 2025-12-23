@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 
-function Header() {
+function Header({ onOpenCart }) {
   const handleSearch = (e) => {
     e.preventDefault();
     console.log("Search submitted");
@@ -30,7 +30,11 @@ function Header() {
           </button>
         </form>
         <Link to="/shop">Shop</Link>
-        <button className={styles.cartButton} aria-label="Shopping cart">
+        <button
+          onClick={onOpenCart}
+          className={styles.cartButton}
+          aria-label="Shopping cart"
+        >
           <span className="material-icons" aria-hidden="true">
             shopping_cart
           </span>
