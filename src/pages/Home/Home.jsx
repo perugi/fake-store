@@ -1,24 +1,36 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import Button from "../../components/Button/Button";
 import ItemCard from "../../components/ItemCard/ItemCard";
 import styles from "./Home.module.css";
 import products from "../../data/products.json";
 import { useEffect } from "react";
 
+const TRENDING_IDS = [1, 2, 3, 4, 5]
+
 function Home() {
-  const trendingIds = [1, 2, 3, 4, 5]
-  console.log(trendingProducts);
-  const [trendingProcust, setTrendingProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [trendingProducts, setTrendingProducts] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
 
   useEffect(() => {
     Promise.all(
-      trendingIds.map(id =>
+      TRENDING_IDS.map(id =>
         fetch(`https://fakestoreapi.com/products/${id}`)
-          .then(response => {
-
+          .then(r => {
+            if (!r.ok) throw new Error(`HTTP ${r.status}`);
+            return r.json();
+          })
+      )
     )
+      .then(products => {
+        setTrendingProducts(products);
+        console.log(products);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }, []);
   
   return (
     <div>
