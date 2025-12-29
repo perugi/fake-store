@@ -16,7 +16,7 @@ function Home() {
   useEffect(() => {
     Promise.all(
       TRENDING_IDS.map((id) =>
-        fetch(`https://fakestoreapi.com/product/${id}`).then((r) => {
+        fetch(`https://fakestoreapi.com/products/${id}`).then((r) => {
           if (!r.ok) throw new Error(`HTTP ${r.status}`);
           return r.json();
         })
@@ -24,6 +24,7 @@ function Home() {
     )
       .then((products) => {
         setTrendingProducts(products);
+        console.log(products);
       })
       .catch((err) => {
         setError(err);
