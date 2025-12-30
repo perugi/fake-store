@@ -1,6 +1,6 @@
 import styles from "./ItemCard.module.css";
 import Rating from "./Rating";
-import Button from "../Button/Button";
+import AddItem from "./AddItem";
 
 function ItemCard({ product }) {
   return (
@@ -8,7 +8,8 @@ function ItemCard({ product }) {
       <img src={product.image} alt={product.title} />
       <h2 className={styles.title}>{product.title}</h2>
       <Rating rating={product.rating} />
-      <Button size="small" variant="secondary" label="Add to Cart" />
+      <p>{product.price}€</p>
+      <AddItem />
     </div>
   );
 }
