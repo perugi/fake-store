@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Cart.module.css";
+import Button from "../Button/Button";
 
-function Cart({ isOpen, onClose }) {
+function Cart({ isOpen, onClose, shoppingCart, setShoppingCart }) {
   const dialogRef = useRef();
 
   useEffect(() => {
@@ -25,7 +27,18 @@ function Cart({ isOpen, onClose }) {
       <button onClick={onClose} autoFocus>
         Close
       </button>
-      <h2>Cart</h2>
+      <h1>Cart</h1>
+      {shoppingCart.length === 0 ? (
+        <>
+          <h2>Your cart is empty.</h2>
+          <p>Looks like you haven't added anything to your cart yet.</p>
+          <Link to="/shop">
+            <Button label="Start Shopping" onClick={onClose} />
+          </Link>
+        </>
+      ) : (
+        <></>
+      )}
     </dialog>
   );
 }

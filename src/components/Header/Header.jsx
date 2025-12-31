@@ -35,9 +35,7 @@ function Header({ onOpenCart }) {
           className={styles.cartButton}
           aria-label="Shopping cart"
         >
-          <span className="material-icons" aria-hidden="true">
-            shopping_cart
-          </span>
+          Cart
         </button>
       </div>
     </div>

@@ -7,15 +7,21 @@ import styles from "./App.module.css";
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [shoppingCart, setShoppingCart] = useState([]);
 
   return (
     <div className={styles.app}>
       <Header onOpenCart={() => setIsCartOpen(true)} />
       <main className={styles.main}>
-        <Outlet />
+        <Outlet context={{ shoppingCart, setShoppingCart }} />
       </main>
       <Footer />
-      <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <Cart
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        shoppingCart={shoppingCart}
+        setShoppingCart={setShoppingCart}
+      />
     </div>
   );
 }
