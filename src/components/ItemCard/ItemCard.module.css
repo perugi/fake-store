@@ -1,3 +1,5 @@
 .itemCard {
-  color: red;
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }

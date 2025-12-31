@@ -7,7 +7,7 @@ function AddItem() {
 
   const addToCart = (e) => {
     e.preventDefault();
-    console.log(`Added ${quantity} items to cart.`);
+    alert(`Added ${quantity} items to cart.`);
     setQuantity(1);
   };
 
