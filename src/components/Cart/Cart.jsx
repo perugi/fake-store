@@ -28,7 +28,7 @@ function Cart({ isOpen, onClose, shoppingCart, setShoppingCart }) {
         Close
       </button>
       <h1>Cart</h1>
-      {shoppingCart.length === 0 ? (
+      {Object.keys(shoppingCart).length === 0 ? (
         <>
           <h2>Your cart is empty.</h2>
           <p>Looks like you haven't added anything to your cart yet.</p>

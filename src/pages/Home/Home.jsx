@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link, useOutletContext } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import ItemCard from "../../components/ItemCard/ItemCard";
-import styles from "./Home.module.css";
 import products from "../../data/products.json";
-import { useEffect } from "react";
+import styles from "./Home.module.css";
 
 const TRENDING_IDS = [1, 2, 3, 4, 5];
 
@@ -12,6 +11,8 @@ function Home() {
   const [trendingProducts, setTrendingProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const { addToCart } = useOutletContext();
 
   useEffect(() => {
     Promise.all(
@@ -57,7 +58,11 @@ function Home() {
           <p>Loading...</p>
         ) : (
           trendingProducts.map((product) => (
-            <ItemCard key={product.id} product={product} />
+            <ItemCard
+              key={product.id}
+              product={product}
+              addToCart={addToCart}
+            />
           ))
         )}
       </section>

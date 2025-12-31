@@ -2,17 +2,17 @@ import { useState } from "react";
 import styles from "./AddItem.module.css";
 import Button from "../Button/Button";
 
-function AddItem() {
+function AddItem({ product, addToCart }) {
   const [quantity, setQuantity] = useState(1);
 
-  const addToCart = (e) => {
+  const addItemToCart = (e) => {
     e.preventDefault();
-    alert(`Added ${quantity} items to cart.`);
+    addToCart(product, quantity);
     setQuantity(1);
   };
 
   return (
-    <form className={styles.addItem} onSubmit={addToCart}>
+    <form className={styles.addItem} onSubmit={addItemToCart}>
       <div className={styles.quantitySelector}>
         <button
           type="button"

@@ -7,20 +7,54 @@ import styles from "./App.module.css";
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [shoppingCart, setShoppingCart] = useState([]);
+  const [shoppingCart, setShoppingCart] = useState({});
+
+  console.log("Shopping Cart:", shoppingCart);
+
+  const addToCart = (product, quantity) => {
+    setShoppingCart((prevCart) => {
+      const existingItem = prevCart[product.id];
+      return {
+        ...prevCart,
+        [product.id]: {
+          ...product,
+          quantity: existingItem ? existingItem.quantity + quantity : quantity,
+        },
+      };
+    });
+  };
+
+  const setItemQuantity = (productId, quantity) => {
+    setShoppingCart((prevCart) => ({
+      ...prevCart,
+      [productId]: {
+        ...prevCart[productId],
+        quantity,
+      },
+    }));
+  };
+
+  const removeFromCart = (productId) => {
+    setShoppingCart((prevCart) => {
+      const updatedCart = { ...prevCart };
+      delete updatedCart[productId];
+      return updatedCart;
+    });
+  };
 
   return (
     <div className={styles.app}>
       <Header onOpenCart={() => setIsCartOpen(true)} />
       <main className={styles.main}>
-        <Outlet context={{ shoppingCart, setShoppingCart }} />
+        <Outlet context={{ addToCart }} />
       </main>
       <Footer />
       <Cart
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
         shoppingCart={shoppingCart}
-        setShoppingCart={setShoppingCart}
+        setItemQuantity={setItemQuantity}
+        removeFromCart={removeFromCart}
       />
     </div>
   );
