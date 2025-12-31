@@ -41,10 +41,15 @@ function Home() {
 
   return (
     <div>
-      Home
+      <div className={styles.hero}>
+        <div>Buy useless things.</div>
+        <div>Throw away your money.</div>
+        <div>Because you can.</div>
+      </div>
       <Link to="/shop">
-        <Button label="Click Me" variant="secondary" />
+        <Button label="Start Shopping" variant="secondary" />
       </Link>
+      <h1 className={styles.trending}>Trending</h1>
       <section className={styles.trendingItems}>
         {error ? (
           <p>Error loading products: {error.message}</p>

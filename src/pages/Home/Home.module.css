@@ -1,3 +1,10 @@
+.hero {
+  width: 1200px;
+  height: 300px;
+  background-color: #4eeea3;
+  margin-bottom: 2rem;
+}
+
 .trendingItems {
   display: flex;
   gap: 20px;
