@@ -3,13 +3,23 @@ import { Outlet } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Cart from "./components/Cart/Cart";
+import Toast from "./components/Toast/Toast";
 import styles from "./App.module.css";
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [shoppingCart, setShoppingCart] = useState([]);
+  const [toastMessage, setToastMessage] = useState(null);
 
-  console.log("Shopping Cart:", shoppingCart);
+  const handleItemAdded = () => {
+    setToastMessage("Item added to cart!");
+  };
+
+  const handleCheckout = () => {
+    setShoppingCart([]);
+    setIsCartOpen(false);
+    setToastMessage("Checkout complete! Thank you for your purchase.");
+  };
 
   const addToCart = (product, quantity) => {
     setShoppingCart((prevCart) => {
@@ -50,7 +60,7 @@ function App() {
         onOpenCart={() => setIsCartOpen(true)}
       />
       <main className={styles.main}>
-        <Outlet context={{ addToCart }} />
+        <Outlet context={{ addToCart, onItemAdded: handleItemAdded }} />
       </main>
       <Footer />
       <Cart
@@ -59,7 +69,14 @@ function App() {
         shoppingCart={shoppingCart}
         setItemQuantity={setItemQuantity}
         removeFromCart={removeFromCart}
+        handleCheckout={handleCheckout}
       />
+      {toastMessage && (
+        <Toast
+          message={toastMessage}
+          onComplete={() => setToastMessage(null)}
+        />
+      )}
     </div>
   );
 }

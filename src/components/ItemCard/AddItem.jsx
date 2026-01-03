@@ -3,13 +3,14 @@ import styles from "./AddItem.module.css";
 import Button from "../Button/Button";
 import SetItemQuantity from "./SetItemQuantity";
 
-function AddItem({ product, addToCart }) {
+function AddItem({ product, addToCart, onItemAdded }) {
   const [quantity, setQuantity] = useState(1);
 
   const addItemToCart = (e) => {
     e.preventDefault();
     addToCart(product, quantity);
     setQuantity(1);
+    onItemAdded?.();
   };
 
   return (

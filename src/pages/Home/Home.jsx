@@ -12,7 +12,7 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const { addToCart } = useOutletContext();
+  const { addToCart, onItemAdded } = useOutletContext();
 
   useEffect(() => {
     Promise.all(
@@ -62,6 +62,7 @@ function Home() {
               key={product.id}
               product={product}
               addToCart={addToCart}
+              onItemAdded={onItemAdded}
             />
           ))
         )}
