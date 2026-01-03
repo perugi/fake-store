@@ -45,7 +45,10 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <Header onOpenCart={() => setIsCartOpen(true)} />
+      <Header
+        shoppingCart={shoppingCart}
+        onOpenCart={() => setIsCartOpen(true)}
+      />
       <main className={styles.main}>
         <Outlet context={{ addToCart }} />
       </main>

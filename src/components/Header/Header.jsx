@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 
-function Header({ onOpenCart }) {
+function Header({ shoppingCart, onOpenCart }) {
+  const itemCount = shoppingCart.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   const handleSearch = (e) => {
     e.preventDefault();
     console.log("Search submitted");
@@ -36,6 +41,11 @@ function Header({ onOpenCart }) {
           aria-label="Shopping cart"
         >
           Cart
+          {itemCount > 0 && (
+            <span className={styles.itemCount} aria-hidden="true">
+              {itemCount}
+            </span>
+          )}
         </button>
       </div>
     </div>
