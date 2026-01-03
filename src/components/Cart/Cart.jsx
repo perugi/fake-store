@@ -2,8 +2,15 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Cart.module.css";
 import Button from "../Button/Button";
+import ItemCardCart from "./ItemCardCart";
 
-function Cart({ isOpen, onClose, shoppingCart, setShoppingCart }) {
+function Cart({
+  isOpen,
+  onClose,
+  shoppingCart,
+  setItemQuantity,
+  removeFromCart,
+}) {
   const dialogRef = useRef();
 
   useEffect(() => {
@@ -28,7 +35,7 @@ function Cart({ isOpen, onClose, shoppingCart, setShoppingCart }) {
         Close
       </button>
       <h1>Cart</h1>
-      {Object.keys(shoppingCart).length === 0 ? (
+      {shoppingCart.length === 0 ? (
         <>
           <h2>Your cart is empty.</h2>
           <p>Looks like you haven't added anything to your cart yet.</p>
@@ -37,7 +44,16 @@ function Cart({ isOpen, onClose, shoppingCart, setShoppingCart }) {
           </Link>
         </>
       ) : (
-        <></>
+        <>
+          {shoppingCart.map((item) => (
+            <ItemCardCart
+              key={item.id}
+              item={item}
+              setItemQuantity={setItemQuantity}
+              removeFromCart={removeFromCart}
+            />
+          ))}
+        </>
       )}
     </dialog>
   );

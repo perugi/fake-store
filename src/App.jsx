@@ -7,39 +7,40 @@ import styles from "./App.module.css";
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [shoppingCart, setShoppingCart] = useState({});
+  const [shoppingCart, setShoppingCart] = useState([]);
 
   console.log("Shopping Cart:", shoppingCart);
 
   const addToCart = (product, quantity) => {
     setShoppingCart((prevCart) => {
-      const existingItem = prevCart[product.id];
-      return {
-        ...prevCart,
-        [product.id]: {
-          ...product,
-          quantity: existingItem ? existingItem.quantity + quantity : quantity,
-        },
-      };
+      const existingItemIndex = prevCart.findIndex(
+        (item) => item.id === product.id
+      );
+      if (existingItemIndex !== -1) {
+        const updatedCart = [...prevCart];
+        updatedCart[existingItemIndex] = {
+          ...updatedCart[existingItemIndex],
+          quantity: updatedCart[existingItemIndex].quantity + quantity,
+        };
+        return updatedCart.toSorted((a, b) => a.title.localeCompare(b.title));
+      } else {
+        return [...prevCart, { ...product, quantity }];
+      }
     });
   };
 
   const setItemQuantity = (productId, quantity) => {
-    setShoppingCart((prevCart) => ({
-      ...prevCart,
-      [productId]: {
-        ...prevCart[productId],
-        quantity,
-      },
-    }));
+    setShoppingCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === productId ? { ...item, quantity } : item
+      )
+    );
   };
 
   const removeFromCart = (productId) => {
-    setShoppingCart((prevCart) => {
-      const updatedCart = { ...prevCart };
-      delete updatedCart[productId];
-      return updatedCart;
-    });
+    setShoppingCart((prevCart) =>
+      prevCart.filter((item) => item.id !== productId)
+    );
   };
 
   return (
