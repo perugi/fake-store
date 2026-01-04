@@ -1,0 +1,11 @@
+.shop {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
