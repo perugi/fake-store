@@ -1,44 +1,19 @@
-import { useEffect, useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import ItemCard from "../../components/ItemCard/ItemCard";
-import products from "../../data/products.json";
+import useFetchItemsById from "../../utils/useFetchItemsById";
 import styles from "./Home.module.css";
 
 const TRENDING_IDS = [1, 2, 3, 4, 5];
 
 function Home() {
-  const [trendingProducts, setTrendingProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const {
+    items: trendingProducts,
+    loading,
+    error,
+  } = useFetchItemsById(TRENDING_IDS);
 
   const { addToCart, onItemAdded } = useOutletContext();
-
-  useEffect(() => {
-    Promise.all(
-      TRENDING_IDS.map((id) =>
-        fetch(`https://fakestoreapi.com/products/${id}`).then((r) => {
-          if (!r.ok) throw new Error(`HTTP ${r.status}`);
-          return r.json();
-        })
-      )
-    )
-      .then((products) => {
-        setTrendingProducts(products);
-        console.log(products);
-      })
-      .catch((err) => {
-        setError(err);
-        console.error("Error fetching trending products:", {
-          message: err.message,
-          name: err.name,
-          stack: err.stack,
-        });
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
 
   return (
     <div>
