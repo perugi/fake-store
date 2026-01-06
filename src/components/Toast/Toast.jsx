@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Toast.module.css";
 
-function Toast({ message, duration = 3000, onComplete }) {
+function Toast({ children, duration = 3000, onComplete }) {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function Toast({ message, duration = 3000, onComplete }) {
       role="alert"
       aria-live="assertive"
     >
-      {message}
+      {children}
     </div>
   );
 }

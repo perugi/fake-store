@@ -45,7 +45,7 @@ function Cart({
           <h2>Your cart is empty.</h2>
           <p>Looks like you haven't added anything to your cart yet.</p>
           <Link to="/shop">
-            <Button label="Start Shopping" onClick={onClose} />
+            <Button onClick={onClose}>Start Shopping</Button>
           </Link>
         </>
       ) : (
@@ -62,12 +62,13 @@ function Cart({
             <h2>Total:</h2>
             <p>{cartTotal}</p>
           </div>
-          <Button label="Checkout" variant="primary" onClick={handleCheckout} />
+          <Button variant="primary" onClick={handleCheckout}>Checkout</Button>
           <Button
-            label="Continue Shopping"
             variant="secondary"
             onClick={onClose}
-          />
+          >
+            Continue Shopping
+          </Button>
         </>
       )}
     </dialog>
