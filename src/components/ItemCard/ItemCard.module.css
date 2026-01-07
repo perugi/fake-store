@@ -10,35 +10,20 @@
   }
 }
 
+.imageWrap {
+  position: relative;
+  display: inline-block;
+}
+
 .cardLink {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
   text-decoration: none;
-  color: inherit;
-  display: block;
-  cursor: pointer;
+}
 
-  .imageWrap {
-    position: relative;
-    display: inline-block;
-  }
-
-  &:hover,
-  &:focus {
-    opacity: 0.8;
-  }
-
-  &:hover .imageWrap::after,
-  &:focus .imageWrap::after {
-    content: "Details";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    font-weight: var(--font-weight-bold);
-    border-radius: 9999px;
-    background-color: var(--primary-color);
-    border: none;
-  }
+.itemCard:hover .cardLink {
+  opacity: 1;
 }

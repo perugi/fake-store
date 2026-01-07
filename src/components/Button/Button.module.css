@@ -31,6 +31,7 @@
     transition: transform 0.1s ease;
     display: block;
     outline: none;
+    cursor: pointer;
 
     &.small {
       padding: 0.5rem 1rem;
