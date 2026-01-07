@@ -2,13 +2,8 @@ import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import { useNavigate } from "react-router-dom";
 
-function Header({ shoppingCart, onOpenCart }) {
+function Header({ itemCount, onOpenCart }) {
   const navigate = useNavigate();
-
-  const itemCount = shoppingCart.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
 
   const handleSearch = (e) => {
     e.preventDefault();

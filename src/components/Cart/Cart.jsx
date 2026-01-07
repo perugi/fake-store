@@ -11,6 +11,7 @@ function Cart({
   setItemQuantity,
   removeFromCart,
   handleCheckout,
+  total,
 }) {
   const dialogRef = useRef();
 
@@ -24,10 +25,6 @@ function Cart({
       dialog.close();
     }
   }, [isOpen]);
-
-  const cartTotal = shoppingCart
-    .reduce((total, item) => total + item.price * item.quantity, 0)
-    .toFixed(2);
 
   return (
     <dialog
@@ -60,13 +57,12 @@ function Cart({
           ))}
           <div className={styles.cartTotal}>
             <h2>Total:</h2>
-            <p>{cartTotal}</p>
+            <p>{total}</p>
           </div>
-          <Button variant="primary" onClick={handleCheckout}>Checkout</Button>
-          <Button
-            variant="secondary"
-            onClick={onClose}
-          >
+          <Button variant="primary" onClick={handleCheckout}>
+            Checkout
+          </Button>
+          <Button variant="secondary" onClick={onClose}>
             Continue Shopping
           </Button>
         </>
