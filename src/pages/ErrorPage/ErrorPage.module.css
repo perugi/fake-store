@@ -1,0 +1,28 @@
+.errorPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.content {
+  text-align: center;
+  max-width: 600px;
+}
+
+.errorCode {
+  font-size: 8rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-color);
+}
+
+.errorTitle {
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+  margin: 1rem 0 0;
+}
+
+.errorMessage {
+  font-size: 1.125rem;
+  margin: 1.5rem 0 1rem;
+}
