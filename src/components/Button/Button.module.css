@@ -30,6 +30,7 @@
     font-weight: var(--font-weight-bold);
     transition: transform 0.1s ease;
     display: block;
+    outline: none;
 
     &.small {
       padding: 0.5rem 1rem;
