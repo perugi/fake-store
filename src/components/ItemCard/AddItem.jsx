@@ -21,7 +21,9 @@ function AddItem({ product, addToCart, onItemAdded }) {
         onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
         onIncrement={() => setQuantity(quantity + 1)}
       />
-      <Button size="small" variant="secondary" label="Add to Cart" />
+      <Button size="small" variant="secondary">
+        Add to Cart
+      </Button>
     </form>
   );
 }
