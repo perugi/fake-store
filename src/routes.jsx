@@ -1,7 +1,7 @@
 import App from "./App";
 import Home from "./pages/Home/Home";
 import Shop from "./pages/Shop/Shop";
-import ProductDetails from "./pages/ProductDetails";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import ErrorPage from "./pages/ErrorPage";
 
 const routes = [
@@ -12,7 +12,7 @@ const routes = [
     children: [
       { index: true, element: <Home /> },
       { path: "shop", element: <Shop /> },
-      { path: "shop/:productId", element: <ProductDetails /> },
+      { path: "shop/details/:productId", element: <ProductDetails /> },
     ],
   },
 ];

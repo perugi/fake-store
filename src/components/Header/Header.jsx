@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
+import { useNavigate } from "react-router-dom";
 
 function Header({ shoppingCart, onOpenCart }) {
+  const navigate = useNavigate();
+
   const itemCount = shoppingCart.reduce(
     (total, item) => total + item.quantity,
     0
@@ -9,8 +12,8 @@ function Header({ shoppingCart, onOpenCart }) {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log("Search submitted");
-    // TODO: Handle search logic here
+    navigate(`/shop?q=${e.target.elements[0].value}`);
+    e.target.reset();
   };
 
   return (

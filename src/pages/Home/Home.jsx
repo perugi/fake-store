@@ -23,7 +23,7 @@ function Home() {
         <div>Because you can.</div>
       </div>
       <Link to="/shop">
-        <Button label="Start Shopping" variant="secondary" />
+        <Button variant="secondary">Start Shopping</Button>
       </Link>
       <h1 className={styles.trending}>Trending</h1>
       <section className={styles.trendingItems}>

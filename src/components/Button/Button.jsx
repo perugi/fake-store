@@ -1,7 +1,7 @@
 import styles from "./Button.module.css";
 
 function Button({
-  label,
+  children,
   onClick,
   size = "large",
   disabled = false,
@@ -19,7 +19,7 @@ function Button({
           ${variant === "secondary" && styles.secondary}
           ${size === "small" && styles.small}`}
       >
-        {label}
+        {children}
       </button>
     </div>
   );

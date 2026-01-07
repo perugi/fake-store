@@ -72,10 +72,9 @@ function App() {
         handleCheckout={handleCheckout}
       />
       {toastMessage && (
-        <Toast
-          message={toastMessage}
-          onComplete={() => setToastMessage(null)}
-        />
+        <Toast onComplete={() => setToastMessage(null)}>
+          {toastMessage}
+        </Toast>
       )}
     </div>
   );

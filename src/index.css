@@ -6,3 +6,7 @@
   --font-weight-bold: 700;
   --font-weight-regular: 500;
 }
+
+body {
+  overflow-y: scroll; /* Show vertical scrollbar */
+}
