@@ -6,6 +6,9 @@ import styles from "./Shop.module.css";
 import CategorySelector from "./CategorySelector";
 
 function Shop() {
+  // TODO : add sorting
+  // TODO : add breadcrumbs
+
   const { addToCart, onItemAdded } = useOutletContext();
   const [activeCategory, setActiveCategory] = useState("all");
 
