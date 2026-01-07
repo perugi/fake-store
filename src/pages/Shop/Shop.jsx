@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import useFetchAllItems from "../../utils/useFetchAllItems";
 import ItemCard from "../../components/ItemCard/ItemCard";
@@ -7,8 +7,10 @@ import CategorySelector from "./CategorySelector";
 
 function Shop() {
   const { addToCart, onItemAdded } = useOutletContext();
-  const [activeCategory, setActiveCategory] = useState("all");
   const [sorting, setSorting] = useState({ field: "title", order: "asc" });
+  const [searchParams, setSearchParams] = useSearchParams({ category: "all" });
+  
+  const activeCategory = searchParams.get("category");
 
   const { items, loading, error } = useFetchAllItems();
 
@@ -58,7 +60,7 @@ function Shop() {
         <CategorySelector
           items={items}
           activeCategory={activeCategory}
-          setActiveCategory={setActiveCategory}
+          setActiveCategory={(category) => setSearchParams({ category })}
         />
         <section className={styles.items}>
           {error ? (
