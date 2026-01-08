@@ -1,9 +1,9 @@
 import githubLogo from "../../assets/githublogo.png";
 import styles from "./Footer.module.css";
 
-export default function Footer({ className }) {
+export default function Footer() {
   return (
-    <footer className={className}>
+    <footer>
       <a className={styles.ghLink} href="https://github.com/perugi">
         <div>Made by</div>
         <img className={styles.ghLogo} src={githubLogo} alt="" />

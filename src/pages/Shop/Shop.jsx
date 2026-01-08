@@ -3,12 +3,9 @@ import { useState } from "react";
 import useFetchAllItems from "../../utils/useFetchAllItems";
 import ItemCard from "../../components/ItemCard/ItemCard";
 import styles from "./Shop.module.css";
-import CategorySelector from "./CategorySelector";
+import CategorySelector from "../../components/CategorySelector/CategorySelector";
 
 function Shop() {
-  // TODO : add sorting
-  // TODO : add breadcrumbs
-
   const { addToCart, onItemAdded } = useOutletContext();
   const [sorting, setSorting] = useState({ field: "title", order: "asc" });
   const [searchParams, setSearchParams] = useSearchParams({ category: "all" });
