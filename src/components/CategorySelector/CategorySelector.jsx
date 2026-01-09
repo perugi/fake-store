@@ -30,7 +30,7 @@ const CategorySelector = ({ items, activeCategory, setActiveCategory }) => {
   });
 
   return (
-    <div className={styles.categorySelector}>
+    <nav className={styles.categorySelector} aria-label="Product categories">
       {CATEGORIES.map((category, index) => (
         <button
           className={`${styles.categoryButton} ${
@@ -38,12 +38,16 @@ const CategorySelector = ({ items, activeCategory, setActiveCategory }) => {
           }`}
           key={category}
           onClick={() => setActiveCategory(category)}
+          aria-pressed={activeCategory === category}
+          aria-label={`${capitalizeFirstLetter(category)} (${
+            itemsPerCategory[index]
+          } items)`}
         >
-          <span>{capitalizeFirstLetter(category)}</span>
-          <span>{itemsPerCategory[index]}</span>
+          <span aria-hidden="true">{capitalizeFirstLetter(category)}</span>
+          <span aria-hidden="true">{itemsPerCategory[index]}</span>
         </button>
       ))}
-    </div>
+    </nav>
   );
 };
 

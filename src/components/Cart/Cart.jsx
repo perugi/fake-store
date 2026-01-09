@@ -32,17 +32,18 @@ function Cart({
       className={styles.cart}
       onClose={onClose}
       closedby="any"
+      aria-labelledby="cart-title"
     >
-      <button onClick={onClose} autoFocus>
+      <button onClick={onClose} autoFocus aria-label="Close cart">
         Close
       </button>
-      <h1>Cart</h1>
+      <h1 id="cart-title">Cart</h1>
       {shoppingCart.length === 0 ? (
         <>
           <h2>Your cart is empty.</h2>
           <p>Looks like you haven't added anything to your cart yet.</p>
-          <Link to="/shop">
-            <Button onClick={onClose}>Start Shopping</Button>
+          <Link to="/shop" onClick={onClose}>
+            <Button>Start Shopping</Button>
           </Link>
         </>
       ) : (
@@ -55,9 +56,9 @@ function Cart({
               removeFromCart={removeFromCart}
             />
           ))}
-          <div className={styles.cartTotal}>
+          <div className={styles.cartTotal} role="status" aria-live="polite">
             <h2>Total:</h2>
-            <p>{total}</p>
+            <p aria-label={`Total price: ${total}`}>{total}</p>
           </div>
           <Button variant="primary" onClick={handleCheckout}>
             Checkout
