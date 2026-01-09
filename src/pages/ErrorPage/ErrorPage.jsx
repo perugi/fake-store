@@ -16,11 +16,9 @@ function ErrorPage() {
           {is404 ? "Page Not Found" : "Oops! Something went wrong"}
         </h2>
         <p className={styles.errorMessage}>
-          {error?.statusText ||
-            error?.message ||
-            (is404
-              ? "The page you're looking for doesn't exist. It might have been moved or deleted."
-              : "We encountered an unexpected error. Please try again later.")}
+          {is404
+            ? "The page you're looking for doesn't exist. It might have been moved or deleted."
+            : "We encountered an unexpected error. Please try again later."}
         </p>
         <Link to="/" className={styles.buttonLink}>
           <Button variant="secondary">Go Back Home</Button>
