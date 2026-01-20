@@ -17,11 +17,7 @@ function Home() {
 
   return (
     <div>
-      <div className={styles.hero}>
-        <div>Buy useless things.</div>
-        <div>Throw away your money.</div>
-        <div>Because you can.</div>
-      </div>
+      <div className={styles.hero}>Buy useless things.</div>
       <Link to="/shop">
         <Button variant="secondary">Start Shopping</Button>
       </Link>

@@ -6,22 +6,24 @@ import Button from "../Button/Button";
 
 function ItemCard({ product, addToCart, onItemAdded }) {
   return (
-    <div className={styles.itemCard}>
-      <div className={styles.imageWrap}>
-        <img src={product.image} alt={product.title} />
-        <Link to={`/shop/details/${product.id}`} className={styles.cardLink}>
-          <Button size="small">Details</Button>
-        </Link>
-      </div>
-      <h2 className={styles.title}>{product.title}</h2>
-      <Rating rating={product.rating} />
-      <p>{product.price}€</p>
-      <div onClick={(e) => e.stopPropagation()}>
-        <AddItem
-          product={product}
-          addToCart={addToCart}
-          onItemAdded={onItemAdded}
-        />
+    <div className={styles.itemCardWrapper}>
+      <div className={styles.itemCard}>
+        <div className={styles.imageWrap}>
+          <img src={product.image} alt={product.title} />
+          <Link to={`/shop/details/${product.id}`} className={styles.cardLink}>
+            <Button size="small">Details</Button>
+          </Link>
+        </div>
+        <h2 className={styles.title}>{product.title}</h2>
+        <Rating rating={product.rating} />
+        <p>{product.price}€</p>
+        <div onClick={(e) => e.stopPropagation()}>
+          <AddItem
+            product={product}
+            addToCart={addToCart}
+            onItemAdded={onItemAdded}
+          />
+        </div>
       </div>
     </div>
   );

@@ -1,10 +1,27 @@
 @import url("@perugi/css-reset/reset.css");
 
 :root {
-  --primary-color: #4eeea3;
+  --background-color: #fecc04;
+  --primary-color: #69e386;
+  --secondary-color: #f4b2d7;
+  --tertiary-color: #aae5ef;
+  --offwhite-color: #f2efe2;
+  --text-color: #000;
   --disabled-color: #adadad;
+  --disabled-text-color: #7a7a7a;
   --font-weight-bold: 700;
   --font-weight-regular: 500;
+  --font-body: "Space Grotesk", system-ui, -apple-system, "Segoe UI", roboto,
+    ubuntu, cantarell, "Noto Sans", "Helvetica Neue", arial, sans-serif;
+  --font-heading: "Anton", Impact, "Arial Black", system-ui, sans-serif;
+  --translate-distance: 4px;
+  --translate-distance-neg: calc(-1 * var(--translate-distance));
+  --shadow-inset: 1px;
+}
+
+html,
+body {
+  font-family: var(--font-body);
 }
 
 body {
