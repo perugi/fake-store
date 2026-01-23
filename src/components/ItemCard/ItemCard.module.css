@@ -1,5 +1,7 @@
 .itemCard {
+  width: 100%;
   border: 2px solid black;
+
   padding: 1rem;
   box-shadow: 4px 4px 0 #000;
   background-color: var(--offwhite-color);

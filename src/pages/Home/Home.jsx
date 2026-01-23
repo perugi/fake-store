@@ -16,9 +16,9 @@ function Home() {
   const { addToCart, onItemAdded } = useOutletContext();
 
   return (
-    <div>
+    <div className={styles.home}>
       <div className={styles.hero}>Buy useless things.</div>
-      <Link to="/shop">
+      <Link className={styles.startShopping} to="/shop">
         <Button variant="secondary">Start Shopping</Button>
       </Link>
       <h1 className={styles.trending}>Trending</h1>
