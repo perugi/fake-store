@@ -3,8 +3,11 @@
   bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
-  border: 1px solid black;
+  border: 2px solid black;
   padding: 0.5rem 2rem;
+  background-color: var(--primary-color);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.25rem;
 
   &.show {
     animation: slide-in 0.3s ease-out forwards;
