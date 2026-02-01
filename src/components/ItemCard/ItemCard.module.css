@@ -1,9 +1,11 @@
 .itemCard {
   width: 100%;
-  border: 2px solid black;
-
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
   padding: 1rem;
   box-shadow: 4px 4px 0 #000;
+  border: 2px solid black;
   background-color: var(--offwhite-color);
 
   img {
@@ -16,6 +18,10 @@
 .imageWrap {
   position: relative;
   display: inline-block;
+}
+
+.price {
+  flex: 1;
 }
 
 .cardLink {
