@@ -22,17 +22,25 @@ function Rating({ rating }) {
       <span className={styles.rateValue}>{rate.toFixed(1)}</span>
       <span className={styles.rateStars}>
         {[...Array(fullStars)].map((_, index) => (
-          <span key={index} className="material-icons" aria-hidden="true">
+          <span
+            key={index}
+            className={`material-icons ${styles.star}`}
+            aria-hidden="true"
+          >
             star
           </span>
         ))}
         {halfStar === 1 && (
-          <span className="material-icons" aria-hidden="true">
+          <span className={`material-icons ${styles.star}`} aria-hidden="true">
             star_half
           </span>
         )}
         {[...Array(emptyStars)].map((_, index) => (
-          <span key={index} className="material-icons" aria-hidden="true">
+          <span
+            key={index}
+            className={`material-icons ${styles.star}`}
+            aria-hidden="true"
+          >
             star_border
           </span>
         ))}
