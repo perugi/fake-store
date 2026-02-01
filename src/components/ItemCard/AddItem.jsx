@@ -9,8 +9,8 @@ function AddItem({ product, addToCart, onItemAdded }) {
   const addItemToCart = (e) => {
     e.preventDefault();
     addToCart(product, quantity);
+    onItemAdded?.(quantity);
     setQuantity(1);
-    onItemAdded?.();
   };
 
   return (

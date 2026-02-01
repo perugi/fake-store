@@ -20,7 +20,11 @@ function App() {
   } = useShoppingCart();
   const [toastMessage, setToastMessage] = useState(null);
 
-  const handleItemAdded = () => {
+  const handleItemAdded = (quantity) => {
+    if (quantity > 1) {
+      setToastMessage(`${quantity} items added to cart!`);
+      return;
+    }
     setToastMessage("Item added to cart!");
   };
 
