@@ -4,8 +4,8 @@
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
-  box-shadow: 4px 4px 0 #000;
-  border: 2px solid black;
+  box-shadow: var(--box-shadow-sm);
+  border: var(--border-sm);
   background-color: var(--offwhite-color);
 
   img {

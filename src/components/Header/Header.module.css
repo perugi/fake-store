@@ -1,21 +1,21 @@
 .header {
+  display: flex;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
   margin-bottom: 2rem;
   position: sticky;
+  border: var(--border-lg);
+  background-color: var(--offwhite-color);
+  box-shadow: var(--box-shadow-lg);
   top: 0;
-  background-color: #d3d3d3;
   padding: 20px;
+  z-index: 9999;
+}
 
-  .headerContainer {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-
-    .searchContainer {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
+.searchContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
