@@ -1,9 +1,15 @@
 .rating {
   display: flex;
   align-items: center;
+  gap: 4px;
   font-size: 0.875rem;
 }
 
 .star {
   font-size: 0.875rem;
+  transform: translateY(1px);
+}
+
+.count {
+  color: var(--disabled-text-color);
 }
