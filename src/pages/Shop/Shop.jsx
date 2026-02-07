@@ -21,7 +21,7 @@ function Shop() {
       : items.filter((item) => item.category === activeCategory);
 
   const searchedItems = filteredItems.filter((item) =>
-    item.title.toLowerCase().includes(query.toLowerCase())
+    item.title.toLowerCase().includes(query.toLowerCase()),
   );
 
   const sortedItems = [...searchedItems].sort((a, b) => {
@@ -82,16 +82,22 @@ function Shop() {
                 Search results for "{query}"
               </div>
             )}
-            <div className={styles.itemCards}>
-              {sortedItems.map((product) => (
-                <ItemCard
-                  key={product.id}
-                  product={product}
-                  addToCart={addToCart}
-                  onItemAdded={onItemAdded}
-                />
-              ))}
-            </div>
+            {sortedItems.length === 0 ? (
+              <div className={styles.noResults}>
+                <p>No products found{query && ` for "${query}"`}</p>
+              </div>
+            ) : (
+              <div className={styles.itemCards}>
+                {sortedItems.map((product) => (
+                  <ItemCard
+                    key={product.id}
+                    product={product}
+                    addToCart={addToCart}
+                    onItemAdded={onItemAdded}
+                  />
+                ))}
+              </div>
+            )}
           </>
         )}
       </section>
