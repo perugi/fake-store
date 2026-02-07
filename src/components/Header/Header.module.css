@@ -3,14 +3,31 @@
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
+  margin-top: 1rem;
   margin-bottom: 2rem;
   position: sticky;
   border: var(--border-lg);
   background-color: var(--offwhite-color);
   box-shadow: var(--box-shadow-lg);
-  top: 0;
+  top: 1rem;
   padding: 20px;
   z-index: 9999;
+}
+
+.logo {
+  width: 180px;
+  font-size: 2rem;
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-color);
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-shadow: 0 0 0 transparent;
+  transition: text-shadow 0.3s ease;
+
+  &:hover {
+    text-shadow: 1px 1px 0 var(--primary-color);
+  }
 }
 
 .searchContainer {
@@ -18,4 +35,58 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  > div {
+    position: relative;
+    height: 40px;
+    width: 100%;
+    max-width: 400px;
+
+    .searchInput {
+      width: 100%;
+      height: inherit;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      outline: none;
+      border: var(--border-sm);
+    }
+
+    .searchButton {
+      position: absolute;
+      right: 0;
+      height: inherit;
+      border: var(--border-sm);
+      background-color: var(--secondary-color);
+
+      &:hover {
+        background-color: var(--primary-color);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.navLinks {
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.shopLink {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.itemCount {
+  position: absolute;
+  top: -8px;
+  right: -14px;
+  background-color: var(--secondary-color);
+  border: var(--border-sm);
+  border-radius: 9999px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-bold);
 }

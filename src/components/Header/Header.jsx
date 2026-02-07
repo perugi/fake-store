@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import { useNavigate } from "react-router-dom";
+import Button from "../Button/Button";
 
 function Header({ itemCount, onOpenCart }) {
   const navigate = useNavigate();
@@ -13,37 +14,48 @@ function Header({ itemCount, onOpenCart }) {
 
   return (
     <div className={styles.header}>
-      <Link to="/">FakeStore</Link>
+      <Link to="/" className={styles.logo}>
+        FakeStore
+      </Link>
       <form className={styles.searchContainer} onSubmit={handleSearch}>
-        <input
-          type="text"
-          className={styles.searchInput}
-          placeholder="Search store"
-          aria-label="Search products"
-        />
-        <button
-          type="submit"
-          className={styles.searchButton}
-          aria-label="Search"
-        >
-          <span className="material-icons" aria-hidden="true">
-            search
-          </span>
-        </button>
+        <div>
+          <input
+            type="text"
+            className={styles.searchInput}
+            placeholder="Search store"
+            aria-label="Search products"
+          />
+          <button
+            type="submit"
+            className={styles.searchButton}
+            aria-label="Search"
+          >
+            <span className="material-icons" aria-hidden="true">
+              search
+            </span>
+          </button>
+        </div>
       </form>
-      <Link to="/shop">Shop</Link>
-      <button
-        onClick={onOpenCart}
-        className={styles.cartButton}
-        aria-label="Shopping cart"
-      >
-        Cart
-        {itemCount > 0 && (
-          <span className={styles.itemCount} aria-hidden="true">
-            {itemCount}
-          </span>
-        )}
-      </button>
+      <div className={styles.navLinks}>
+        <Button variant="secondary" size="small">
+          <Link to="/shop" className={styles.shopLink}>
+            Shop
+          </Link>
+        </Button>
+        <Button
+          variant="primary"
+          size="small"
+          onClick={onOpenCart}
+          aria-label="Shopping cart"
+        >
+          Cart
+          {itemCount > 0 && (
+            <span className={styles.itemCount} aria-hidden="true">
+              {itemCount}
+            </span>
+          )}
+        </Button>
+      </div>
     </div>
   );
 }
