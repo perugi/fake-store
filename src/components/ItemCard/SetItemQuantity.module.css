@@ -38,6 +38,18 @@
   }
 }
 
+.large {
+  .quantityButton {
+    font-size: 1.25rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .quantity {
+    width: 2.5rem;
+    font-size: 1.25rem;
+  }
+}
+
 .quantity::-webkit-outer-spin-button,
 .quantity::-webkit-inner-spin-button {
   /* stylelint-disable-next-line property-no-vendor-prefix */

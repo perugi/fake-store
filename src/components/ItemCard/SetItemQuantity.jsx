@@ -1,8 +1,16 @@
 import styles from "./SetItemQuantity.module.css";
 
-function SetItemQuantity({ value, onDecrement, onChange, onIncrement }) {
+function SetItemQuantity({
+  value,
+  onDecrement,
+  onChange,
+  onIncrement,
+  size = "small",
+}) {
   return (
-    <div className={styles.quantitySelector}>
+    <div
+      className={`${styles.quantitySelector} ${size === "large" && styles.large}`}
+    >
       <button
         type="button"
         className={`${styles.quantityButton} ${styles.decrease}`}

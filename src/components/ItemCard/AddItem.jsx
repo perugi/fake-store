@@ -3,7 +3,7 @@ import styles from "./AddItem.module.css";
 import Button from "../Button/Button";
 import SetItemQuantity from "./SetItemQuantity";
 
-function AddItem({ product, addToCart, onItemAdded }) {
+function AddItem({ product, addToCart, onItemAdded, size = "small" }) {
   const [quantity, setQuantity] = useState(1);
 
   const addItemToCart = (e) => {
@@ -20,8 +20,9 @@ function AddItem({ product, addToCart, onItemAdded }) {
         onDecrement={() => setQuantity(Math.max(1, quantity - 1))}
         onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
         onIncrement={() => setQuantity(quantity + 1)}
+        size={size}
       />
-      <Button size="small" variant="secondary">
+      <Button size={size} variant="secondary">
         Add to Cart
       </Button>
     </form>
