@@ -7,7 +7,7 @@ function ItemCardCart({ item, setItemQuantity, removeFromCart }) {
   return (
     <div className={styles.itemCardCart}>
       <img src={item.image} alt={item.title} />
-      <div>
+      <div className={styles.itemInfo}>
         <h2>{item.title}</h2>
         <SetItemQuantity
           value={item.quantity}
@@ -20,9 +20,15 @@ function ItemCardCart({ item, setItemQuantity, removeFromCart }) {
           onIncrement={() => setItemQuantity(item.id, item.quantity + 1)}
         />
       </div>
-      <div>
+      <div className={styles.itemPrice}>
+        <button
+          className={styles.removeButton}
+          onClick={() => removeFromCart(item.id)}
+          aria-label="Remove item from cart"
+        >
+          X
+        </button>
         <p>{itemTotal}€</p>
-        <button onClick={() => removeFromCart(item.id)}>X</button>
       </div>
     </div>
   );

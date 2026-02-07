@@ -34,38 +34,39 @@ function Cart({
       closedby="any"
       aria-labelledby="cart-title"
     >
-      <button onClick={onClose} autoFocus aria-label="Close cart">
-        Close
-      </button>
       <h1 id="cart-title">Cart</h1>
       {shoppingCart.length === 0 ? (
-        <>
+        <div className={styles.emptyCart}>
           <h2>Your cart is empty.</h2>
           <p>Looks like you haven't added anything to your cart yet.</p>
           <Link to="/shop" onClick={onClose}>
             <Button>Start Shopping</Button>
           </Link>
-        </>
+        </div>
       ) : (
         <>
-          {shoppingCart.map((item) => (
-            <ItemCardCart
-              key={item.id}
-              item={item}
-              setItemQuantity={setItemQuantity}
-              removeFromCart={removeFromCart}
-            />
-          ))}
+          <div className={styles.cartItems}>
+            {shoppingCart.map((item) => (
+              <ItemCardCart
+                key={item.id}
+                item={item}
+                setItemQuantity={setItemQuantity}
+                removeFromCart={removeFromCart}
+              />
+            ))}
+          </div>
           <div className={styles.cartTotal} role="status" aria-live="polite">
             <h2>Total:</h2>
-            <p aria-label={`Total price: ${total}`}>{total}</p>
+            <p aria-label={`Total price: ${total}`}>{total}€</p>
           </div>
-          <Button variant="primary" onClick={handleCheckout}>
-            Checkout
-          </Button>
-          <Button variant="secondary" onClick={onClose}>
-            Continue Shopping
-          </Button>
+          <div className={styles.cartActions}>
+            <Button variant="primary" onClick={handleCheckout}>
+              Checkout
+            </Button>
+            <Button variant="secondary" onClick={onClose}>
+              Continue Shopping
+            </Button>
+          </div>
         </>
       )}
     </dialog>
