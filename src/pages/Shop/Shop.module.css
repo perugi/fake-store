@@ -1,10 +1,9 @@
 .shopContainer {
   display: grid;
-  grid-template-rows: auto 1fr;
-  grid-template-columns: auto 1fr;
-  grid-template-areas:
-    "sorting sorting"
-    "categories items";
+  grid-template:
+    "sorting sorting" auto
+    "categories items" 1fr
+    / auto 1fr;
 }
 
 .sorting {

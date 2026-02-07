@@ -44,6 +44,10 @@
 
   .price {
     align-self: center;
+    font-size: 2rem;
+    font-weight: var(--font-weight-bold);
+    margin-top: auto;
+    padding-top: 1rem;
   }
 
   .backLink {
@@ -55,11 +59,4 @@
   font-size: 1rem;
   line-height: 1.6;
   margin-top: 0.5rem;
-}
-
-.price {
-  font-size: 2rem;
-  font-weight: var(--font-weight-bold);
-  margin-top: auto;
-  padding-top: 1rem;
 }
