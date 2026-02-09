@@ -1,22 +1,28 @@
-# web-template
+# fake-store
 
-A template repository, to be used for web projects.
+A mock e-commerce storefront built with React, where users can browse products, filter by category, and manage a shopping cart.
 
-💻 [Live Demo](link-to-demo) 💻
+## [Live Demo](link-to-demo)
 
 ![screenshot](link-to-screenshot)
 
-## 💡 Features
+## Features
 
-- React + Vite project
-- Testing setup using Vitest
-- SPA client-side routing using React Router
-- CSS reset
-- basic folder structure
+- Browse products fetched from the [Fake Store API](https://fakestoreapi.com/).
+- Filter products by category (electronics, jewelry, men's & women's clothing).
+- Search products by name.
+- Sort products by name, price, or rating.
+- Add items to a shopping cart with adjustable quantities.
+- Cart modal using the native `<dialog>` element.
+- Toast notifications for cart actions.
+- Detailed product page with description, rating, and add-to-cart.
+- Responsive, mobile-first layout.
 
-## 🛠️ Technologies, Tools, Design Approaches
+## Technologies, Tools, Design Approaches
 
-- React + Vite (ESlint, Prettier)
-- Vitest
-- React Router
+- Vite + React
+- React Router (client-side SPA routing)
+- CSS Modules with native CSS nesting
+- Vitest + React Testing Library
 - Stylelint
+- Immutable shopping cart data structure
