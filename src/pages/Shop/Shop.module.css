@@ -1,19 +1,36 @@
 .shopContainer {
-  display: grid;
-  grid-template:
-    "sorting sorting" auto
-    "categories items" 1fr
-    / auto 1fr;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media (width >= 1000px) {
+    display: grid;
+    grid-template:
+      "sorting sorting" auto
+      "categories items" 1fr
+      / auto 1fr;
+    gap: 0;
+  }
 }
 
 .sorting {
-  grid-area: sorting;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   gap: 0.75rem;
-  padding: 1rem;
+  padding: 1rem 0;
   font-weight: var(--font-weight-bold);
+
+  @media (width >= 700px) {
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+  }
+
+  @media (width >= 1000px) {
+    grid-area: sorting;
+    padding: 1rem;
+  }
 
   label {
     font-size: 1rem;
@@ -38,15 +55,24 @@
 }
 
 .categories {
-  grid-area: categories;
+  @media (width >= 1000px) {
+    grid-area: categories;
+  }
 }
 
 .items {
-  grid-area: items;
+  @media (width >= 1000px) {
+    grid-area: items;
+  }
 }
 
 .itemCards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+
+  @media (width >= 700px) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
 }
