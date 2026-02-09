@@ -2,9 +2,9 @@
 
 A mock e-commerce storefront built with React, where users can browse products, filter by category, and manage a shopping cart.
 
-## [Live Demo](link-to-demo)
+## [Live Demo](https://fake-store-4nd.pages.dev/shop)
 
-![screenshot](link-to-screenshot)
+![screenshot](https://github.com/user-attachments/assets/e51a1feb-16c0-4bbc-b88b-1596c629ed4b)
 
 ## Features
 
