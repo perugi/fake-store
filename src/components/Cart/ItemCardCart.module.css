@@ -5,6 +5,11 @@
   border: var(--border-sm);
   box-shadow: var(--box-shadow-sm);
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   img {
     width: 80px;
     height: 80px;

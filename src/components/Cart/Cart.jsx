@@ -52,6 +52,7 @@ function Cart({
                 item={item}
                 setItemQuantity={setItemQuantity}
                 removeFromCart={removeFromCart}
+                onClose={onClose}
               />
             ))}
           </div>

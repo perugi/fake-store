@@ -1,14 +1,19 @@
 import styles from "./ItemCardCart.module.css";
+import { Link } from "react-router-dom";
 import SetItemQuantity from "../ItemCard/SetItemQuantity";
 
-function ItemCardCart({ item, setItemQuantity, removeFromCart }) {
+function ItemCardCart({ item, setItemQuantity, removeFromCart, onClose }) {
   const itemTotal = (item.price * item.quantity).toFixed(2);
 
   return (
     <div className={styles.itemCardCart}>
-      <img src={item.image} alt={item.title} />
+      <Link to={`/shop/details/${item.id}`} onClick={onClose}>
+        <img src={item.image} alt={item.title} />
+      </Link>
       <div className={styles.itemInfo}>
-        <h2>{item.title}</h2>
+        <Link to={`/shop/details/${item.id}`} onClick={onClose}>
+          <h2>{item.title}</h2>
+        </Link>
         <SetItemQuantity
           value={item.quantity}
           onDecrement={() =>
