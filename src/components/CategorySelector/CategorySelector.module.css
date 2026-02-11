@@ -1,23 +1,44 @@
 .categorySelector {
-  position: sticky;
-  top: 140px;
-  width: 200px;
-  margin-right: 20px;
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
+  gap: 0.5rem;
+
+  @media (width >= 1000px) {
+    position: sticky;
+    top: 140px;
+    width: 200px;
+    margin-right: 20px;
+    flex-flow: column nowrap;
+    gap: 0;
+  }
 }
 
 .categoryButton {
   display: flex;
   justify-content: space-between;
-  border: none;
-  background: none;
+  gap: 0.5rem;
+  border: var(--border-sm);
+  background: var(--offwhite-color);
+  padding: 0.5rem 0.75rem;
+  border-radius: 9999px;
 
   &.active {
     font-weight: var(--font-weight-bold);
+    background-color: var(--primary-color);
   }
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media (width >= 1000px) {
+    border-radius: 0;
+    background-color: transparent;
+    border: none;
+    padding: 0.25rem 0;
+
+    &.active {
+      background-color: transparent;
+    }
   }
 }

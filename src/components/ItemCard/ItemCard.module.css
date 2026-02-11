@@ -9,9 +9,14 @@
   background-color: var(--offwhite-color);
 
   img {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     object-fit: contain;
+
+    @media (width >= 700px) {
+      width: 200px;
+      height: 200px;
+    }
   }
 }
 
@@ -38,10 +43,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0;
+  opacity: 1;
   text-decoration: none;
+
+  @media (width >= 1000px) {
+    opacity: 0;
+  }
 }
 
 .itemCard:hover .cardLink {
-  opacity: 1;
+  @media (width >= 1000px) {
+    opacity: 1;
+  }
 }
