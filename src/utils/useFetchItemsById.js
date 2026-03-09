@@ -1,40 +1,35 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
+import { fetchReducer, initialFetchState, FETCH_ACTIONS } from "./fetchReducer";
 
 const useFetchItemsById = (ids) => {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [state, dispatch] = useReducer(fetchReducer, initialFetchState);
 
   useEffect(() => {
-    setLoading(true);
-    setError(null);
+    dispatch({ type: FETCH_ACTIONS.LOADING });
 
     Promise.all(
       ids.map((id) =>
         fetch(`https://fakestoreapi.com/products/${id}`).then((r) => {
           if (!r.ok) throw new Error(`HTTP ${r.status}`);
           return r.json();
-        })
-      )
+        }),
+      ),
     )
       .then((products) => {
-        setItems(products);
+        dispatch({ type: FETCH_ACTIONS.SUCCESS, payload: products });
         console.log(products);
       })
       .catch((err) => {
-        setError(err);
+        dispatch({ type: FETCH_ACTIONS.ERROR, payload: err });
         console.error("Error fetching products:", {
           message: err.message,
           name: err.name,
           stack: err.stack,
         });
-      })
-      .finally(() => {
-        setLoading(false);
       });
   }, [ids]);
 
-  return { items, loading, error };
+  return { items: state.items, loading: state.loading, error: state.error };
 };
 
 export default useFetchItemsById;

@@ -1,13 +1,40 @@
 import { useOutletContext, useSearchParams } from "react-router-dom";
-import { useState } from "react";
+import { useReducer } from "react";
 import useFetchAllItems from "../../utils/useFetchAllItems";
 import ItemCard from "../../components/ItemCard/ItemCard";
 import styles from "./Shop.module.css";
 import CategorySelector from "../../components/CategorySelector/CategorySelector";
 
+const SORT_ACTIONS = {
+  SET_FIELD: "SET_FIELD",
+  SET_ORDER: "SET_ORDER",
+};
+
+function sortingReducer(state, action) {
+  switch (action.type) {
+    case SORT_ACTIONS.SET_FIELD:
+      return {
+        ...state,
+        field: action.payload,
+      };
+    case SORT_ACTIONS.SET_ORDER:
+      return {
+        ...state,
+        order: action.payload,
+      };
+    default:
+      return state;
+  }
+}
+
+const initialSortingState = {
+  field: "title",
+  order: "asc",
+};
+
 function Shop() {
   const { addToCart, onItemAdded } = useOutletContext();
-  const [sorting, setSorting] = useState({ field: "title", order: "asc" });
+  const [sorting, dispatch] = useReducer(sortingReducer, initialSortingState);
   const [searchParams, setSearchParams] = useSearchParams({ category: "all" });
 
   const query = searchParams.get("q") || "";
@@ -45,7 +72,7 @@ function Shop() {
           id="sortField"
           value={sorting.field}
           onChange={(e) =>
-            setSorting((prev) => ({ ...prev, field: e.target.value }))
+            dispatch({ type: SORT_ACTIONS.SET_FIELD, payload: e.target.value })
           }
         >
           <option value="title">Name</option>
@@ -56,7 +83,7 @@ function Shop() {
           id="sortOrder"
           value={sorting.order}
           onChange={(e) =>
-            setSorting((prev) => ({ ...prev, order: e.target.value }))
+            dispatch({ type: SORT_ACTIONS.SET_ORDER, payload: e.target.value })
           }
         >
           <option value="asc">Ascending</option>
